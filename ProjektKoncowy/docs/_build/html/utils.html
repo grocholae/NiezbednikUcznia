@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>utils package &#8212; Projekt Końcowy 0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=8dde47fa"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="models package" href="models.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="utils-package">
+<h1>utils package<a class="headerlink" href="#utils-package" title="Link to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+</section>
+<section id="module-utils.encryption">
+<span id="utils-encryption-module"></span><h2>utils.encryption module<a class="headerlink" href="#module-utils.encryption" title="Link to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.encryption.hash_password">
+<span class="sig-prename descclassname"><span class="pre">utils.encryption.</span></span><span class="sig-name descname"><span class="pre">hash_password</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils/encryption.html#hash_password"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.encryption.hash_password" title="Link to this definition">¶</a></dt>
+<dd><p>Kodowanie haseł pod przechowywanie ich w bazie danych
+:param password:
+:return:</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.encryption.verify_password">
+<span class="sig-prename descclassname"><span class="pre">utils.encryption.</span></span><span class="sig-name descname"><span class="pre">verify_password</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hashed</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils/encryption.html#verify_password"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.encryption.verify_password" title="Link to this definition">¶</a></dt>
+<dd><p>Weryfikacja poprawności hasła
+:param password:
+:param hashed:
+:return:</p>
+</dd></dl>
+
+</section>
+<section id="module-utils.pdf_export">
+<span id="utils-pdf-export-module"></span><h2>utils.pdf_export module<a class="headerlink" href="#module-utils.pdf_export" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="utils.pdf_export.PDF">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">utils.pdf_export.</span></span><span class="sig-name descname"><span class="pre">PDF</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils/pdf_export.html#PDF"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.pdf_export.PDF" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">FPDF</span></code></p>
+<p>Służy do eksportu ocen i planu do plików pdf, które są zapisywane w folderze raporty.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.pdf_export.PDF.footer">
+<span class="sig-name descname"><span class="pre">footer</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils/pdf_export.html#PDF.footer"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.pdf_export.PDF.footer" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utils.pdf_export.PDF.header">
+<span class="sig-name descname"><span class="pre">header</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils/pdf_export.html#PDF.header"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.pdf_export.PDF.header" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.pdf_export.export_grades">
+<span class="sig-prename descclassname"><span class="pre">utils.pdf_export.</span></span><span class="sig-name descname"><span class="pre">export_grades</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils/pdf_export.html#export_grades"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.pdf_export.export_grades" title="Link to this definition">¶</a></dt>
+<dd><p>Eksport ocen studenta w estetyczne sposób z wyciąganiem danych z bazy danych.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.pdf_export.export_schedule">
+<span class="sig-prename descclassname"><span class="pre">utils.pdf_export.</span></span><span class="sig-name descname"><span class="pre">export_schedule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">student</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils/pdf_export.html#export_schedule"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.pdf_export.export_schedule" title="Link to this definition">¶</a></dt>
+<dd><p>Eksport planu studenta w estetyczne sposób z wyciąganiem danych z bazy danych.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.pdf_export.export_schedule_teacher">
+<span class="sig-prename descclassname"><span class="pre">utils.pdf_export.</span></span><span class="sig-name descname"><span class="pre">export_schedule_teacher</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">teacher</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils/pdf_export.html#export_schedule_teacher"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.pdf_export.export_schedule_teacher" title="Link to this definition">¶</a></dt>
+<dd><p>Eksport planu nauczyciela w estetyczne sposób z wyciąganiem danych z bazy danych.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.pdf_export.hex_to_rgb">
+<span class="sig-prename descclassname"><span class="pre">utils.pdf_export.</span></span><span class="sig-name descname"><span class="pre">hex_to_rgb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">hex_color</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils/pdf_export.html#hex_to_rgb"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.pdf_export.hex_to_rgb" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Konwertuje kolor w formacie szesnastkowym (#RRGGBB) na krotkę RGB.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>hex_color</strong> (<em>str</em>) – Kolor w formacie heksadecymalnym (np. “#FFFFFF”).</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Krotka z wartościami (R, G, B).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple(int, int, int)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="utils.pdf_export.sanitize_filename_component">
+<span class="sig-prename descclassname"><span class="pre">utils.pdf_export.</span></span><span class="sig-name descname"><span class="pre">sanitize_filename_component</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utils/pdf_export.html#sanitize_filename_component"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utils.pdf_export.sanitize_filename_component" title="Link to this definition">¶</a></dt>
+<dd><p>Zmiana zapisu pełnej ścieżki.</p>
+</dd></dl>
+
+</section>
+<section id="module-utils">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-utils" title="Link to this heading">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Projekt Końcowy</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">src</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="gui.html">gui package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html">models package</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">utils package</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">src</a><ul>
+      <li>Previous: <a href="models.html" title="previous chapter">models package</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, Ewa Grochola, Ula Kępka.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/utils.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

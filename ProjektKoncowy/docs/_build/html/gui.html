@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>gui package &#8212; Projekt Końcowy 0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=8dde47fa"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="main module" href="main.html" />
+    <link rel="prev" title="src" href="modules.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="gui-package">
+<h1>gui package<a class="headerlink" href="#gui-package" title="Link to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+</section>
+<section id="module-gui.add_grade">
+<span id="gui-add-grade-module"></span><h2>gui.add_grade module<a class="headerlink" href="#module-gui.add_grade" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gui.add_grade.AddGradeWindow">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gui.add_grade.</span></span><span class="sig-name descname"><span class="pre">AddGradeWindow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/add_grade.html#AddGradeWindow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.add_grade.AddGradeWindow" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Okno umożliwiające nauczycielowi wystawienie oceny studentowi.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.add_grade.AddGradeWindow.save_grade">
+<span class="sig-name descname"><span class="pre">save_grade</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/add_grade.html#AddGradeWindow.save_grade"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.add_grade.AddGradeWindow.save_grade" title="Link to this definition">¶</a></dt>
+<dd><p>Zapisuje wystawioną ocenę do bazy danych po weryfikacji danych formularza.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.add_grade.AddGradeWindow.update_subjects">
+<span class="sig-name descname"><span class="pre">update_subjects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selected_student_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/add_grade.html#AddGradeWindow.update_subjects"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.add_grade.AddGradeWindow.update_subjects" title="Link to this definition">¶</a></dt>
+<dd><p>Aktualizuje listę przedmiotów dostępnych dla wybranego studenta.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-gui.add_schedule">
+<span id="gui-add-schedule-module"></span><h2>gui.add_schedule module<a class="headerlink" href="#module-gui.add_schedule" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gui.add_schedule.AddScheduleWindow">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gui.add_schedule.</span></span><span class="sig-name descname"><span class="pre">AddScheduleWindow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/add_schedule.html#AddScheduleWindow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.add_schedule.AddScheduleWindow" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Okno dodawania zajęć do planu użytkownika.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.add_schedule.AddScheduleWindow.add_schedule">
+<span class="sig-name descname"><span class="pre">add_schedule</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/add_schedule.html#AddScheduleWindow.add_schedule"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.add_schedule.AddScheduleWindow.add_schedule" title="Link to this definition">¶</a></dt>
+<dd><p>Dodanie do bd nowych zajęć.
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.add_schedule.AddScheduleWindow.update_teachers">
+<span class="sig-name descname"><span class="pre">update_teachers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">selected_subject_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/add_schedule.html#AddScheduleWindow.update_teachers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.add_schedule.AddScheduleWindow.update_teachers" title="Link to this definition">¶</a></dt>
+<dd><p>Wyświetlanie nauczycieli uczących wybrany przedmiot.
+:param selected_subject_name:
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.add_schedule.AddScheduleWindow.update_times">
+<span class="sig-name descname"><span class="pre">update_times</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">_</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/add_schedule.html#AddScheduleWindow.update_times"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.add_schedule.AddScheduleWindow.update_times" title="Link to this definition">¶</a></dt>
+<dd><p>Wyświetlanie czasu dostępności dla grupy, dnia tygodnia oraz nauczyciela łącznie.
+:param _:
+:return:</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-gui.add_subject">
+<span id="gui-add-subject-module"></span><h2>gui.add_subject module<a class="headerlink" href="#module-gui.add_subject" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gui.add_subject.AddSubjectWindow">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gui.add_subject.</span></span><span class="sig-name descname"><span class="pre">AddSubjectWindow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/add_subject.html#AddSubjectWindow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.add_subject.AddSubjectWindow" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Okno umożliwiające dodanie nowego przedmiotu.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.add_subject.AddSubjectWindow.add_subject">
+<span class="sig-name descname"><span class="pre">add_subject</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/add_subject.html#AddSubjectWindow.add_subject"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.add_subject.AddSubjectWindow.add_subject" title="Link to this definition">¶</a></dt>
+<dd><p>Dodawanie przedmiotu do bd.
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.add_subject.AddSubjectWindow.choose_color">
+<span class="sig-name descname"><span class="pre">choose_color</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/add_subject.html#AddSubjectWindow.choose_color"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.add_subject.AddSubjectWindow.choose_color" title="Link to this definition">¶</a></dt>
+<dd><p>Przypisanie koloru do przedmiotu - kwestia wizualna.
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.add_subject.AddSubjectWindow.refresh_subjects">
+<span class="sig-name descname"><span class="pre">refresh_subjects</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/add_subject.html#AddSubjectWindow.refresh_subjects"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.add_subject.AddSubjectWindow.refresh_subjects" title="Link to this definition">¶</a></dt>
+<dd><p>Wyświetlanie bierzącej listy przedmiotów z bd.
+:return:</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-gui.assign_student_group">
+<span id="gui-assign-student-group-module"></span><h2>gui.assign_student_group module<a class="headerlink" href="#module-gui.assign_student_group" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gui.assign_student_group.AssignStudentWindow">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gui.assign_student_group.</span></span><span class="sig-name descname"><span class="pre">AssignStudentWindow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/assign_student_group.html#AssignStudentWindow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.assign_student_group.AssignStudentWindow" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Okno służące do przypisywania studenta do wybranej grupy.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.assign_student_group.AssignStudentWindow.assign_to_group">
+<span class="sig-name descname"><span class="pre">assign_to_group</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/assign_student_group.html#AssignStudentWindow.assign_to_group"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.assign_student_group.AssignStudentWindow.assign_to_group" title="Link to this definition">¶</a></dt>
+<dd><p>Dodanie studentowi wartości gupy. Update w sqlite.
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.assign_student_group.AssignStudentWindow.update_current_group_label">
+<span class="sig-name descname"><span class="pre">update_current_group_label</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/assign_student_group.html#AssignStudentWindow.update_current_group_label"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.assign_student_group.AssignStudentWindow.update_current_group_label" title="Link to this definition">¶</a></dt>
+<dd><p>Wyświetlanie grupy dla konkretnego studenta.
+:param event:
+:return:</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-gui.assign_teacher_subject">
+<span id="gui-assign-teacher-subject-module"></span><h2>gui.assign_teacher_subject module<a class="headerlink" href="#module-gui.assign_teacher_subject" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gui.assign_teacher_subject.AssignTeacherWindow">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gui.assign_teacher_subject.</span></span><span class="sig-name descname"><span class="pre">AssignTeacherWindow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/assign_teacher_subject.html#AssignTeacherWindow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.assign_teacher_subject.AssignTeacherWindow" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Okno umożliwiające przypisanie wybranego przedmiotu do nauczyciela.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.assign_teacher_subject.AssignTeacherWindow.assign_subject_to_teacher">
+<span class="sig-name descname"><span class="pre">assign_subject_to_teacher</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/assign_teacher_subject.html#AssignTeacherWindow.assign_subject_to_teacher"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.assign_teacher_subject.AssignTeacherWindow.assign_subject_to_teacher" title="Link to this definition">¶</a></dt>
+<dd><p>Dodanie w bd nowej instarcji do tabeli teacher-subject.
+:return:</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-gui.dashboard">
+<span id="gui-dashboard-module"></span><h2>gui.dashboard module<a class="headerlink" href="#module-gui.dashboard" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gui.dashboard.Dashboard">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gui.dashboard.</span></span><span class="sig-name descname"><span class="pre">Dashboard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">master</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/dashboard.html#Dashboard"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.dashboard.Dashboard" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Klasa reprezentująca główne okno pulpitu użytkownika po zalogowaniu.</p>
+<p>Zależnie od roli użytkownika (student, nauczyciel, admin), wyświetla odpowiednie przyciski
+do nawigacji po funkcjach systemu. Zawiera również przycisk „Wyloguj”, który pozwala wrócić
+do ekranu logowania.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.dashboard.Dashboard.logout">
+<span class="sig-name descname"><span class="pre">logout</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/dashboard.html#Dashboard.logout"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.dashboard.Dashboard.logout" title="Link to this definition">¶</a></dt>
+<dd><p>Wylogowuje użytkownika: niszczy ramkę dashboardu i odtwarza LoginWindow.
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.dashboard.Dashboard.open_add_grade">
+<span class="sig-name descname"><span class="pre">open_add_grade</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/dashboard.html#Dashboard.open_add_grade"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.dashboard.Dashboard.open_add_grade" title="Link to this definition">¶</a></dt>
+<dd><p>Otwiera okno do dodawania ocen studentom (dla nauczycieli).
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.dashboard.Dashboard.open_add_schedule">
+<span class="sig-name descname"><span class="pre">open_add_schedule</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/dashboard.html#Dashboard.open_add_schedule"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.dashboard.Dashboard.open_add_schedule" title="Link to this definition">¶</a></dt>
+<dd><p>Otwiera okno do dodawania planu zajęć (dla admina).
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.dashboard.Dashboard.open_add_subject">
+<span class="sig-name descname"><span class="pre">open_add_subject</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/dashboard.html#Dashboard.open_add_subject"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.dashboard.Dashboard.open_add_subject" title="Link to this definition">¶</a></dt>
+<dd><p>Otwiera okno dodawania przedmiotów (dla admina).
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.dashboard.Dashboard.open_assign_student">
+<span class="sig-name descname"><span class="pre">open_assign_student</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/dashboard.html#Dashboard.open_assign_student"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.dashboard.Dashboard.open_assign_student" title="Link to this definition">¶</a></dt>
+<dd><p>Otwiera okno przypisywania studenta do grupy (dla admina).
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.dashboard.Dashboard.open_assign_teacher">
+<span class="sig-name descname"><span class="pre">open_assign_teacher</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/dashboard.html#Dashboard.open_assign_teacher"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.dashboard.Dashboard.open_assign_teacher" title="Link to this definition">¶</a></dt>
+<dd><p>Otwiera okno przypisywania nauczyciela do przedmiotu (dla admina).
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.dashboard.Dashboard.open_grades">
+<span class="sig-name descname"><span class="pre">open_grades</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/dashboard.html#Dashboard.open_grades"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.dashboard.Dashboard.open_grades" title="Link to this definition">¶</a></dt>
+<dd><p>Otwiera okno z ocenami studenta.
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.dashboard.Dashboard.open_schedule">
+<span class="sig-name descname"><span class="pre">open_schedule</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/dashboard.html#Dashboard.open_schedule"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.dashboard.Dashboard.open_schedule" title="Link to this definition">¶</a></dt>
+<dd><p>Otwiera okno z planem lekcji (dla studentów).
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.dashboard.Dashboard.open_schedule_teacher">
+<span class="sig-name descname"><span class="pre">open_schedule_teacher</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/dashboard.html#Dashboard.open_schedule_teacher"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.dashboard.Dashboard.open_schedule_teacher" title="Link to this definition">¶</a></dt>
+<dd><p>Otwiera okno z planem lekcji (dla nauczyciela).
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.dashboard.Dashboard.open_statistics">
+<span class="sig-name descname"><span class="pre">open_statistics</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/dashboard.html#Dashboard.open_statistics"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.dashboard.Dashboard.open_statistics" title="Link to this definition">¶</a></dt>
+<dd><p>Otwiera okno statystyk dla studenta.
+:return:</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-gui.grades">
+<span id="gui-grades-module"></span><h2>gui.grades module<a class="headerlink" href="#module-gui.grades" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gui.grades.GradesWindow">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gui.grades.</span></span><span class="sig-name descname"><span class="pre">GradesWindow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/grades.html#GradesWindow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.grades.GradesWindow" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Student po wejściu w dziennik ocen dostaje informacje na temat historii wszystkich ocen oraz może je wyeksportować do pdf.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.grades.GradesWindow.build_grade_grid">
+<span class="sig-name descname"><span class="pre">build_grade_grid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/grades.html#GradesWindow.build_grade_grid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.grades.GradesWindow.build_grade_grid" title="Link to this definition">¶</a></dt>
+<dd><p>Wyrysowanie w GUI ocen studenta oraz wyciągnięcie ich z bd.
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.grades.GradesWindow.export">
+<span class="sig-name descname"><span class="pre">export</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/grades.html#GradesWindow.export"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.grades.GradesWindow.export" title="Link to this definition">¶</a></dt>
+<dd><p>Wywołuje metodę odpowiedzialną za eksport do PDF ocen studenta.
+:return:</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-gui.login_window">
+<span id="gui-login-window-module"></span><h2>gui.login_window module<a class="headerlink" href="#module-gui.login_window" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gui.login_window.LoginWindow">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gui.login_window.</span></span><span class="sig-name descname"><span class="pre">LoginWindow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">master</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/login_window.html#LoginWindow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.login_window.LoginWindow" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Okno logowania użytkownika.
+Pozwala użytkownikowi wprowadzić nazwę użytkownika i hasło, a także umożliwia przejście do rejestracji nowego konta.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.login_window.LoginWindow.login">
+<span class="sig-name descname"><span class="pre">login</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/login_window.html#LoginWindow.login"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.login_window.LoginWindow.login" title="Link to this definition">¶</a></dt>
+<dd><p>Logowanie ze sprawdzeniem zahashowanego hasła. Sprawdzenie z bd, czy istnieje taki user.
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.login_window.LoginWindow.register">
+<span class="sig-name descname"><span class="pre">register</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/login_window.html#LoginWindow.register"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.login_window.LoginWindow.register" title="Link to this definition">¶</a></dt>
+<dd><p>Dodanie opcji rejestracji nowego użytkownika. Metoda wywołuje osobą klasę.
+:return:</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-gui.register_window">
+<span id="gui-register-window-module"></span><h2>gui.register_window module<a class="headerlink" href="#module-gui.register_window" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gui.register_window.RegisterWindow">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gui.register_window.</span></span><span class="sig-name descname"><span class="pre">RegisterWindow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">master</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">login_window</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/register_window.html#RegisterWindow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.register_window.RegisterWindow" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Okno rejestracji nowego użytkownika. Pozwala na wprowadzenie danych użytkownika..</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.register_window.RegisterWindow.register_user">
+<span class="sig-name descname"><span class="pre">register_user</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/register_window.html#RegisterWindow.register_user"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.register_window.RegisterWindow.register_user" title="Link to this definition">¶</a></dt>
+<dd><p>Dodanie użytkownika do bd.
+:return:</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-gui.schedule">
+<span id="gui-schedule-module"></span><h2>gui.schedule module<a class="headerlink" href="#module-gui.schedule" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gui.schedule.ScheduleWindow">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gui.schedule.</span></span><span class="sig-name descname"><span class="pre">ScheduleWindow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/schedule.html#ScheduleWindow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.schedule.ScheduleWindow" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Wyświelta dla użytkownika - studenta plan jego zajęć wraz z możliwością eksportu planu do pdf.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.schedule.ScheduleWindow.build_schedule_grid">
+<span class="sig-name descname"><span class="pre">build_schedule_grid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/schedule.html#ScheduleWindow.build_schedule_grid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.schedule.ScheduleWindow.build_schedule_grid" title="Link to this definition">¶</a></dt>
+<dd><p>Wyrysowanie planu zajęć.
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.schedule.ScheduleWindow.export">
+<span class="sig-name descname"><span class="pre">export</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/schedule.html#ScheduleWindow.export"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.schedule.ScheduleWindow.export" title="Link to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Eksport do PDF. Wywyołanie metody z utils/pdf_export.py</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-gui.schedule_teacher">
+<span id="gui-schedule-teacher-module"></span><h2>gui.schedule_teacher module<a class="headerlink" href="#module-gui.schedule_teacher" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gui.schedule_teacher.TeacherScheduleWindow">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gui.schedule_teacher.</span></span><span class="sig-name descname"><span class="pre">TeacherScheduleWindow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">teacher</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/schedule_teacher.html#TeacherScheduleWindow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.schedule_teacher.TeacherScheduleWindow" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Wyświetla dla nauczyciela plan jego zajęć wraz z możliwością eksportu planu do PDF.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.schedule_teacher.TeacherScheduleWindow.build_schedule_grid">
+<span class="sig-name descname"><span class="pre">build_schedule_grid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/schedule_teacher.html#TeacherScheduleWindow.build_schedule_grid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.schedule_teacher.TeacherScheduleWindow.build_schedule_grid" title="Link to this definition">¶</a></dt>
+<dd><p>Wyrysowanie planu zajęć.
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.schedule_teacher.TeacherScheduleWindow.export">
+<span class="sig-name descname"><span class="pre">export</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/schedule_teacher.html#TeacherScheduleWindow.export"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.schedule_teacher.TeacherScheduleWindow.export" title="Link to this definition">¶</a></dt>
+<dd><p>Eksport do PDF. Wywyołanie metody z utils/pdf_export.py
+:return:</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.schedule_teacher.TeacherScheduleWindow.has_schedule">
+<span class="sig-name descname"><span class="pre">has_schedule</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/schedule_teacher.html#TeacherScheduleWindow.has_schedule"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.schedule_teacher.TeacherScheduleWindow.has_schedule" title="Link to this definition">¶</a></dt>
+<dd><p>Sprawdzenie czy ma plan zajęć w bd - sqlite.
+:return:</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-gui.statistics">
+<span id="gui-statistics-module"></span><h2>gui.statistics module<a class="headerlink" href="#module-gui.statistics" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="gui.statistics.StatisticsWindow">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">gui.statistics.</span></span><span class="sig-name descname"><span class="pre">StatisticsWindow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">user</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/statistics.html#StatisticsWindow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.statistics.StatisticsWindow" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Okno statystyk ocen dla studenta.</p>
+<p>Ta klasa tworzy okno w tkinter, które wyświetla średnią ocen oraz wykres słupkowy
+z ocenami pogrupowanymi według przedmiotów. Dodatkowo umożliwia eksport wykresu do pliku PDF.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>user</strong> (<a class="reference internal" href="models.html#models.database.User" title="models.database.User"><em>User</em></a>) – Obiekt reprezentujący użytkownika (studenta), dla którego wyświetlane są statystyki.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Atrybuty:</dt><dd><p>user (User): Obiekt użytkownika.
+window (tk.Toplevel): Główne okno statystyk.
+grades (list of Grade): Lista ocen studenta pobrana z bazy danych.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.statistics.StatisticsWindow.calculate_average">
+<span class="sig-name descname"><span class="pre">calculate_average</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/statistics.html#StatisticsWindow.calculate_average"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.statistics.StatisticsWindow.calculate_average" title="Link to this definition">¶</a></dt>
+<dd><p>Oblicza średnią ocen studenta.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Średnia ocen lub 0.0 jeśli brak ocen.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.statistics.StatisticsWindow.export">
+<span class="sig-name descname"><span class="pre">export</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/statistics.html#StatisticsWindow.export"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.statistics.StatisticsWindow.export" title="Link to this definition">¶</a></dt>
+<dd><p>Eksportuje wykres ocen do pliku PDF.</p>
+<p>Plik zapisywany jest w katalogu <cite>raporty/</cite> z nazwą zawierającą ID i imię oraz nazwisko użytkownika.
+Jeśli brak ocen, wyświetla komunikat informujący o braku danych do eksportu.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="gui.statistics.StatisticsWindow.show_chart">
+<span class="sig-name descname"><span class="pre">show_chart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parent</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/statistics.html#StatisticsWindow.show_chart"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.statistics.StatisticsWindow.show_chart" title="Link to this definition">¶</a></dt>
+<dd><p>Wyświetla wykres słupkowy średnich ocen według przedmiotów w podanym kontenerze.</p>
+<p>Jeśli brak ocen, wyświetla stosowny komunikat.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>parent</strong> (<em>tk.Widget</em>) – Kontener tkinter, w którym zostanie osadzony wykres.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gui.statistics.average_grades_by_subject">
+<span class="sig-prename descclassname"><span class="pre">gui.statistics.</span></span><span class="sig-name descname"><span class="pre">average_grades_by_subject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">grades</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/statistics.html#average_grades_by_subject"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.statistics.average_grades_by_subject" title="Link to this definition">¶</a></dt>
+<dd><p>Oblicza średnie oceny dla każdego przedmiotu.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>grades</strong> (<em>list</em><em> of </em><a class="reference internal" href="models.html#models.database.Grade" title="models.database.Grade"><em>Grade</em></a>) – Lista obiektów oceny.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Krotka dwóch list: (lista nazw przedmiotów, lista średnich ocen).</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[list[str], list[float]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="gui.statistics.sanitize_filename_component">
+<span class="sig-prename descclassname"><span class="pre">gui.statistics.</span></span><span class="sig-name descname"><span class="pre">sanitize_filename_component</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/gui/statistics.html#sanitize_filename_component"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#gui.statistics.sanitize_filename_component" title="Link to this definition">¶</a></dt>
+<dd><p>Zamienia niedozwolone znaki w nazwie pliku na bezpieczne.</p>
+<p>Aktualnie zastępuje spacje i znaki ‘/’ podkreśleniami.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>s</strong> (<em>str</em>) – Ciąg znaków do sanitizacji.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Sanitizowany ciąg znaków.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-gui">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-gui" title="Link to this heading">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Projekt Końcowy</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">src</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">gui package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="models.html">models package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils package</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">src</a><ul>
+      <li>Previous: <a href="modules.html" title="previous chapter">src</a></li>
+      <li>Next: <a href="main.html" title="next chapter">main module</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, Ewa Grochola, Ula Kępka.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/gui.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

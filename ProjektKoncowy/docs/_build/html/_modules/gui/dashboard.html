@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gui.dashboard &#8212; Projekt Końcowy 0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=27fed22d" />
+    <script src="../../_static/documentation_options.js?v=8dde47fa"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for gui.dashboard</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tkinter</span><span class="w"> </span><span class="kn">import</span> <span class="n">ttk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gui.add_grade</span><span class="w"> </span><span class="kn">import</span> <span class="n">AddGradeWindow</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gui.add_schedule</span><span class="w"> </span><span class="kn">import</span> <span class="n">AddScheduleWindow</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gui.add_subject</span><span class="w"> </span><span class="kn">import</span> <span class="n">AddSubjectWindow</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gui.assign_student_group</span><span class="w"> </span><span class="kn">import</span> <span class="n">AssignStudentWindow</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gui.assign_teacher_subject</span><span class="w"> </span><span class="kn">import</span> <span class="n">AssignTeacherWindow</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gui.schedule</span><span class="w"> </span><span class="kn">import</span> <span class="n">ScheduleWindow</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gui.grades</span><span class="w"> </span><span class="kn">import</span> <span class="n">GradesWindow</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gui.schedule_teacher</span><span class="w"> </span><span class="kn">import</span> <span class="n">TeacherScheduleWindow</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">gui.statistics</span><span class="w"> </span><span class="kn">import</span> <span class="n">StatisticsWindow</span>
+
+
+<div class="viewcode-block" id="Dashboard">
+<a class="viewcode-back" href="../../gui.html#gui.dashboard.Dashboard">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Dashboard</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">       Klasa reprezentująca główne okno pulpitu użytkownika po zalogowaniu.</span>
+
+<span class="sd">       Zależnie od roli użytkownika (student, nauczyciel, admin), wyświetla odpowiednie przyciski</span>
+<span class="sd">       do nawigacji po funkcjach systemu. Zawiera również przycisk „Wyloguj”, który pozwala wrócić</span>
+<span class="sd">       do ekranu logowania.</span>
+
+<span class="sd">       &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">master</span><span class="p">,</span> <span class="n">user</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        :param master:</span>
+<span class="sd">        :param user:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user</span> <span class="o">=</span> <span class="n">user</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">master</span> <span class="o">=</span> <span class="n">master</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">schedule_window</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">grades_window</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">statistics_window</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_schedule_window</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assign_student_window</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_subject_window</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assign_teacher_window</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_grades_window</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">master</span><span class="o">.</span><span class="n">minsize</span><span class="p">(</span><span class="mi">350</span><span class="p">,</span> <span class="mi">350</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">master</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="n">bg</span><span class="o">=</span><span class="s2">&quot;#fff8f0&quot;</span><span class="p">)</span>
+
+        <span class="n">style</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Style</span><span class="p">()</span>
+        <span class="n">style</span><span class="o">.</span><span class="n">theme_use</span><span class="p">(</span><span class="s2">&quot;default&quot;</span><span class="p">)</span>
+        <span class="n">style</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;Custom.TButton&quot;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Helvetica&quot;</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="n">padding</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="s2">&quot;#fff8f0&quot;</span><span class="p">)</span>
+        <span class="n">style</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="s2">&quot;Custom.TButton&quot;</span><span class="p">,</span>
+                  <span class="n">background</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;active&quot;</span><span class="p">,</span> <span class="s2">&quot;#f0e0d6&quot;</span><span class="p">)],</span>
+                  <span class="n">foreground</span><span class="o">=</span><span class="p">[(</span><span class="s2">&quot;disabled&quot;</span><span class="p">,</span> <span class="s2">&quot;#a0a0a0&quot;</span><span class="p">)])</span>
+        <span class="n">style</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s2">&quot;Custom.TLabel&quot;</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Helvetica&quot;</span><span class="p">,</span> <span class="mi">14</span><span class="p">),</span> <span class="n">background</span><span class="o">=</span><span class="s2">&quot;#fff8f0&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">frame</span> <span class="o">=</span> <span class="n">tk</span><span class="o">.</span><span class="n">Frame</span><span class="p">(</span><span class="n">master</span><span class="p">,</span> <span class="n">bg</span><span class="o">=</span><span class="s2">&quot;#fff8f0&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="s2">&quot;both&quot;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">padx</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">pady</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+        <span class="n">greeting</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Label</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Witaj, </span><span class="si">{</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;Custom.TLabel&quot;</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">)</span>
+        <span class="n">greeting</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+
+        <span class="n">button_kwargs</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;style&quot;</span><span class="p">:</span> <span class="s2">&quot;Custom.TButton&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="mi">30</span>
+        <span class="p">}</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">add_button</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">command</span><span class="p">):</span>
+<span class="w">            </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">            Opcja dodania dla odpowiedniej roli użytkownika danych funkcji.</span>
+<span class="sd">            :param text:</span>
+<span class="sd">            :param command:</span>
+<span class="sd">            :return:</span>
+<span class="sd">            &quot;&quot;&quot;</span>
+            <span class="n">btn</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="n">text</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="n">command</span><span class="p">,</span> <span class="o">**</span><span class="n">button_kwargs</span><span class="p">)</span>
+            <span class="n">btn</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="n">pady</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+
+        <span class="c1"># STUDENT</span>
+        <span class="k">if</span> <span class="n">user</span><span class="o">.</span><span class="n">role</span> <span class="o">==</span> <span class="s1">&#39;student&#39;</span><span class="p">:</span>
+            <span class="n">add_button</span><span class="p">(</span><span class="s2">&quot;Plan lekcji&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">open_schedule</span><span class="p">)</span>
+            <span class="n">add_button</span><span class="p">(</span><span class="s2">&quot;Dziennik ocen&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">open_grades</span><span class="p">)</span>
+            <span class="n">add_button</span><span class="p">(</span><span class="s2">&quot;Statystyki&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">open_statistics</span><span class="p">)</span>
+
+        <span class="c1"># ADMIN</span>
+        <span class="k">if</span> <span class="n">user</span><span class="o">.</span><span class="n">role</span> <span class="o">==</span> <span class="s1">&#39;admin&#39;</span><span class="p">:</span>
+            <span class="n">add_button</span><span class="p">(</span><span class="s2">&quot;Dodaj studenta do grupy&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">open_assign_student</span><span class="p">)</span>
+            <span class="n">add_button</span><span class="p">(</span><span class="s2">&quot;Dodaj plan zajęć&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">open_add_schedule</span><span class="p">)</span>
+            <span class="n">add_button</span><span class="p">(</span><span class="s2">&quot;Dodaj przedmiot&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">open_add_subject</span><span class="p">)</span>
+            <span class="n">add_button</span><span class="p">(</span><span class="s2">&quot;Dodaj nauczyciela do przedmiotu&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">open_assign_teacher</span><span class="p">)</span>
+
+        <span class="c1"># TEACHER</span>
+        <span class="k">if</span> <span class="n">user</span><span class="o">.</span><span class="n">role</span> <span class="o">==</span> <span class="s1">&#39;teacher&#39;</span><span class="p">:</span>
+            <span class="n">add_button</span><span class="p">(</span><span class="s2">&quot;Dodaj ocenę studentowi&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">open_add_grade</span><span class="p">)</span>
+            <span class="n">add_button</span><span class="p">(</span><span class="s2">&quot;Plan zajęć&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">open_schedule_teacher</span><span class="p">)</span>
+
+        <span class="n">logout_btn</span> <span class="o">=</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Button</span><span class="p">(</span><span class="n">master</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s2">&quot;Wyloguj&quot;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logout</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">&quot;Custom.TButton&quot;</span><span class="p">)</span>
+        <span class="n">logout_btn</span><span class="o">.</span><span class="n">place</span><span class="p">(</span><span class="n">relx</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">rely</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">anchor</span><span class="o">=</span><span class="s2">&quot;se&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=-</span><span class="mi">20</span><span class="p">,</span> <span class="n">y</span><span class="o">=-</span><span class="mi">20</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Dashboard.logout">
+<a class="viewcode-back" href="../../gui.html#gui.dashboard.Dashboard.logout">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">logout</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Wylogowuje użytkownika: niszczy ramkę dashboardu i odtwarza LoginWindow.</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">widget</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">master</span><span class="o">.</span><span class="n">place_slaves</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">widget</span><span class="p">,</span> <span class="n">ttk</span><span class="o">.</span><span class="n">Button</span><span class="p">)</span> <span class="ow">and</span> <span class="n">widget</span><span class="o">.</span><span class="n">cget</span><span class="p">(</span><span class="s2">&quot;text&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Wyloguj&quot;</span><span class="p">:</span>
+                <span class="n">widget</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">gui.login_window</span><span class="w"> </span><span class="kn">import</span> <span class="n">LoginWindow</span>  <span class="c1">#bo nie można było  globalnych ref dla obu</span>
+        <span class="n">LoginWindow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">master</span><span class="p">)</span></div>
+
+
+    <span class="c1"># STUDENT</span>
+<div class="viewcode-block" id="Dashboard.open_schedule">
+<a class="viewcode-back" href="../../gui.html#gui.dashboard.Dashboard.open_schedule">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">open_schedule</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Otwiera okno z planem lekcji (dla studentów).</span>
+<span class="sd">        :return: &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">schedule_window</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">schedule_window</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">winfo_exists</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">schedule_window</span> <span class="o">=</span> <span class="n">ScheduleWindow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">schedule_window</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">lift</span><span class="p">()</span></div>
+
+
+
+<div class="viewcode-block" id="Dashboard.open_grades">
+<a class="viewcode-back" href="../../gui.html#gui.dashboard.Dashboard.open_grades">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">open_grades</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Otwiera okno z ocenami studenta.</span>
+<span class="sd">        :return: &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">grades_window</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">grades_window</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">winfo_exists</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">grades_window</span> <span class="o">=</span> <span class="n">GradesWindow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">grades_window</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">lift</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Dashboard.open_statistics">
+<a class="viewcode-back" href="../../gui.html#gui.dashboard.Dashboard.open_statistics">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">open_statistics</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Otwiera okno statystyk dla studenta.</span>
+<span class="sd">        :return: &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">statistics_window</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">statistics_window</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">winfo_exists</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">statistics_window</span> <span class="o">=</span> <span class="n">StatisticsWindow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">statistics_window</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">lift</span><span class="p">()</span></div>
+
+
+    <span class="c1"># ADMIN</span>
+<div class="viewcode-block" id="Dashboard.open_add_schedule">
+<a class="viewcode-back" href="../../gui.html#gui.dashboard.Dashboard.open_add_schedule">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">open_add_schedule</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Otwiera okno do dodawania planu zajęć (dla admina).</span>
+<span class="sd">        :return: &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_schedule_window</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_schedule_window</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">winfo_exists</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_schedule_window</span> <span class="o">=</span> <span class="n">AddScheduleWindow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_schedule_window</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">lift</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Dashboard.open_assign_student">
+<a class="viewcode-back" href="../../gui.html#gui.dashboard.Dashboard.open_assign_student">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">open_assign_student</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Otwiera okno przypisywania studenta do grupy (dla admina).</span>
+<span class="sd">        :return: &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">assign_student_window</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">assign_student_window</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">winfo_exists</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assign_student_window</span> <span class="o">=</span> <span class="n">AssignStudentWindow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assign_student_window</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">lift</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Dashboard.open_add_subject">
+<a class="viewcode-back" href="../../gui.html#gui.dashboard.Dashboard.open_add_subject">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">open_add_subject</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Otwiera okno dodawania przedmiotów (dla admina).</span>
+<span class="sd">        :return: &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_subject_window</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_subject_window</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">winfo_exists</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_subject_window</span> <span class="o">=</span> <span class="n">AddSubjectWindow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_subject_window</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">lift</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Dashboard.open_assign_teacher">
+<a class="viewcode-back" href="../../gui.html#gui.dashboard.Dashboard.open_assign_teacher">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">open_assign_teacher</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Otwiera okno przypisywania nauczyciela do przedmiotu (dla admina).</span>
+<span class="sd">        :return: &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">assign_teacher_window</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">assign_teacher_window</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">winfo_exists</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assign_teacher_window</span> <span class="o">=</span> <span class="n">AssignTeacherWindow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assign_teacher_window</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">lift</span><span class="p">()</span></div>
+
+
+    <span class="c1"># TEACHER</span>
+<div class="viewcode-block" id="Dashboard.open_add_grade">
+<a class="viewcode-back" href="../../gui.html#gui.dashboard.Dashboard.open_add_grade">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">open_add_grade</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Otwiera okno do dodawania ocen studentom (dla nauczycieli).</span>
+<span class="sd">        :return: &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_grades_window</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_grades_window</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">winfo_exists</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_grades_window</span> <span class="o">=</span> <span class="n">AddGradeWindow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">add_grades_window</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">lift</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Dashboard.open_schedule_teacher">
+<a class="viewcode-back" href="../../gui.html#gui.dashboard.Dashboard.open_schedule_teacher">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">open_schedule_teacher</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Otwiera okno z planem lekcji (dla nauczyciela).</span>
+<span class="sd">        :return: &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">schedule_window</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">schedule_window</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">winfo_exists</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">schedule_window</span> <span class="o">=</span> <span class="n">TeacherScheduleWindow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">user</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">schedule_window</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">lift</span><span class="p">()</span></div>
+</div>
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Projekt Końcowy</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">src</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, Ewa Grochola, Ula Kępka.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

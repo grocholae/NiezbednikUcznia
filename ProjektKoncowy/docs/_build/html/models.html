@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>models package &#8212; Projekt Końcowy 0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=8dde47fa"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="utils package" href="utils.html" />
+    <link rel="prev" title="main module" href="main.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="models-package">
+<h1>models package<a class="headerlink" href="#models-package" title="Link to this heading">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading">¶</a></h2>
+</section>
+<section id="module-models.database">
+<span id="models-database-module"></span><h2>models.database module<a class="headerlink" href="#module-models.database" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="models.database.Admin">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.database.</span></span><span class="sig-name descname"><span class="pre">Admin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/models/database.html#Admin"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.database.Admin" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.database.User" title="models.database.User"><code class="xref py py-class docutils literal notranslate"><span class="pre">User</span></code></a></p>
+<p>Klasa reprezentująca administratora.</p>
+<p>Dziedziczy po klasie User.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>id</strong> (<em>int</em>) – Unikalny identyfikator administratora (ForeignKey do User.id).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.database.Grade">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.database.</span></span><span class="sig-name descname"><span class="pre">Grade</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/models/database.html#Grade"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.database.Grade" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">declarative_base</span></code></p>
+<p>Klasa reprezentująca ocenę.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>int</em>) – Unikalny identyfikator oceny.</p></li>
+<li><p><strong>grade</strong> (<em>float</em>) – Wartość oceny (np. 4.5).</p></li>
+<li><p><strong>date</strong> (<em>datetime.date</em>) – Data wystawienia oceny.</p></li>
+<li><p><strong>student_id</strong> (<em>int</em>) – Identyfikator studenta, któremu wystawiono ocenę.</p></li>
+<li><p><strong>student</strong> (<a class="reference internal" href="#models.database.Student" title="models.database.Student"><em>Student</em></a>) – Obiekt studenta.</p></li>
+<li><p><strong>teacher_id</strong> (<em>int</em>) – Identyfikator nauczyciela wystawiającego ocenę.</p></li>
+<li><p><strong>teacher</strong> (<a class="reference internal" href="#models.database.Teacher" title="models.database.Teacher"><em>Teacher</em></a>) – Obiekt nauczyciela.</p></li>
+<li><p><strong>subject_id</strong> (<em>int</em>) – Identyfikator przedmiotu, którego dotyczy ocena.</p></li>
+<li><p><strong>subject</strong> (<a class="reference internal" href="#models.database.Subject" title="models.database.Subject"><em>Subject</em></a>) – Obiekt przedmiotu.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.database.Grade.student">
+<span class="sig-name descname"><span class="pre">student</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Student'</span></em><a class="headerlink" href="#models.database.Grade.student" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.database.Grade.subject">
+<span class="sig-name descname"><span class="pre">subject</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Subject'</span></em><a class="headerlink" href="#models.database.Grade.subject" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.database.Grade.teacher">
+<span class="sig-name descname"><span class="pre">teacher</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Teacher'</span></em><a class="headerlink" href="#models.database.Grade.teacher" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.database.Group">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.database.</span></span><span class="sig-name descname"><span class="pre">Group</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/models/database.html#Group"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.database.Group" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">declarative_base</span></code></p>
+<p>Klasa reprezentująca grupę studentów.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>int</em>) – Unikalny identyfikator grupy.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – Nazwa grupy.</p></li>
+<li><p><strong>students</strong> (<em>list</em><em>[</em><a class="reference internal" href="#models.database.Student" title="models.database.Student"><em>Student</em></a><em>]</em>) – Lista studentów należących do grupy.</p></li>
+<li><p><strong>max_students</strong> (<em>int</em>) – Maksymalna liczba studentów w grupie.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.database.Group.students">
+<span class="sig-name descname"><span class="pre">students</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Student'</span></em><a class="headerlink" href="#models.database.Group.students" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.database.Schedule">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.database.</span></span><span class="sig-name descname"><span class="pre">Schedule</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/models/database.html#Schedule"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.database.Schedule" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">declarative_base</span></code></p>
+<p>Klasa reprezentująca harmonogram zajęć.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>int</em>) – Unikalny identyfikator zajęcia.</p></li>
+<li><p><strong>day</strong> (<em>str</em>) – Dzień tygodnia (np. “Poniedziałek”).</p></li>
+<li><p><strong>time_id</strong> (<em>int</em>) – Identyfikator czasu zajęć.</p></li>
+<li><p><strong>time</strong> (<a class="reference internal" href="#models.database.Time" title="models.database.Time"><em>Time</em></a>) – Obiekt czasu zajęć.</p></li>
+<li><p><strong>student_id</strong> (<em>int</em>) – Identyfikator studenta przypisanego do zajęć.</p></li>
+<li><p><strong>student</strong> (<a class="reference internal" href="#models.database.Student" title="models.database.Student"><em>Student</em></a>) – Obiekt studenta.</p></li>
+<li><p><strong>teacher_id</strong> (<em>int</em>) – Identyfikator nauczyciela prowadzącego zajęcia.</p></li>
+<li><p><strong>teacher</strong> (<a class="reference internal" href="#models.database.Teacher" title="models.database.Teacher"><em>Teacher</em></a>) – Obiekt nauczyciela.</p></li>
+<li><p><strong>subject_id</strong> (<em>int</em>) – Identyfikator przedmiotu zajęć.</p></li>
+<li><p><strong>subject</strong> (<a class="reference internal" href="#models.database.Subject" title="models.database.Subject"><em>Subject</em></a>) – Obiekt przedmiotu.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.database.Schedule.student">
+<span class="sig-name descname"><span class="pre">student</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Student'</span></em><a class="headerlink" href="#models.database.Schedule.student" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.database.Schedule.subject">
+<span class="sig-name descname"><span class="pre">subject</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Subject'</span></em><a class="headerlink" href="#models.database.Schedule.subject" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.database.Schedule.teacher">
+<span class="sig-name descname"><span class="pre">teacher</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Teacher'</span></em><a class="headerlink" href="#models.database.Schedule.teacher" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.database.Schedule.time">
+<span class="sig-name descname"><span class="pre">time</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Time'</span></em><a class="headerlink" href="#models.database.Schedule.time" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.database.Student">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.database.</span></span><span class="sig-name descname"><span class="pre">Student</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/models/database.html#Student"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.database.Student" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.database.User" title="models.database.User"><code class="xref py py-class docutils literal notranslate"><span class="pre">User</span></code></a></p>
+<p>Klasa reprezentująca studenta.</p>
+<p>Dziedziczy po klasie User.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>int</em>) – Unikalny identyfikator studenta (ForeignKey do User.id).</p></li>
+<li><p><strong>grades</strong> (<em>list</em><em>[</em><a class="reference internal" href="#models.database.Grade" title="models.database.Grade"><em>Grade</em></a><em>]</em>) – Lista ocen przypisanych do studenta.</p></li>
+<li><p><strong>schedules</strong> (<em>list</em><em>[</em><a class="reference internal" href="#models.database.Schedule" title="models.database.Schedule"><em>Schedule</em></a><em>]</em>) – Lista zajęć (harmonogram) studenta.</p></li>
+<li><p><strong>group_id</strong> (<em>int</em>) – Identyfikator grupy, do której należy student.</p></li>
+<li><p><strong>group</strong> (<a class="reference internal" href="#models.database.Group" title="models.database.Group"><em>Group</em></a>) – Obiekt grupy, do której należy student.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.database.Student.grades">
+<span class="sig-name descname"><span class="pre">grades</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Grade'</span></em><a class="headerlink" href="#models.database.Student.grades" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.database.Student.group">
+<span class="sig-name descname"><span class="pre">group</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Group'</span></em><a class="headerlink" href="#models.database.Student.group" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.database.Student.schedules">
+<span class="sig-name descname"><span class="pre">schedules</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Schedule'</span></em><a class="headerlink" href="#models.database.Student.schedules" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.database.Subject">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.database.</span></span><span class="sig-name descname"><span class="pre">Subject</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/models/database.html#Subject"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.database.Subject" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">declarative_base</span></code></p>
+<p>Klasa reprezentująca przedmiot.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>int</em>) – Unikalny identyfikator przedmiotu.</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – Nazwa przedmiotu.</p></li>
+<li><p><strong>nick</strong> (<em>str</em>) – Skrót nazwy przedmiotu.</p></li>
+<li><p><strong>color</strong> (<em>str</em>) – Kolor przypisany do przedmiotu (np. dla wykresów).</p></li>
+<li><p><strong>teachers</strong> (<em>list</em><em>[</em><a class="reference internal" href="#models.database.Teacher" title="models.database.Teacher"><em>Teacher</em></a><em>]</em>) – Lista nauczycieli prowadzących ten przedmiot.</p></li>
+<li><p><strong>grades</strong> (<em>list</em><em>[</em><a class="reference internal" href="#models.database.Grade" title="models.database.Grade"><em>Grade</em></a><em>]</em>) – Lista ocen z tego przedmiotu.</p></li>
+<li><p><strong>schedules</strong> (<em>list</em><em>[</em><a class="reference internal" href="#models.database.Schedule" title="models.database.Schedule"><em>Schedule</em></a><em>]</em>) – Lista zajęć tego przedmiotu.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.database.Subject.grades">
+<span class="sig-name descname"><span class="pre">grades</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Grade'</span></em><a class="headerlink" href="#models.database.Subject.grades" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.database.Subject.schedules">
+<span class="sig-name descname"><span class="pre">schedules</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Schedule'</span></em><a class="headerlink" href="#models.database.Subject.schedules" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.database.Subject.teachers">
+<span class="sig-name descname"><span class="pre">teachers</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Teacher'</span></em><a class="headerlink" href="#models.database.Subject.teachers" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.database.Teacher">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.database.</span></span><span class="sig-name descname"><span class="pre">Teacher</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/models/database.html#Teacher"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.database.Teacher" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#models.database.User" title="models.database.User"><code class="xref py py-class docutils literal notranslate"><span class="pre">User</span></code></a></p>
+<p>Klasa reprezentująca nauczyciela.</p>
+<p>Dziedziczy po klasie User.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>int</em>) – Unikalny identyfikator nauczyciela (ForeignKey do User.id).</p></li>
+<li><p><strong>subjects</strong> (<em>list</em><em>[</em><a class="reference internal" href="#models.database.Subject" title="models.database.Subject"><em>Subject</em></a><em>]</em>) – Lista przedmiotów nauczanych przez nauczyciela.</p></li>
+<li><p><strong>grades</strong> (<em>list</em><em>[</em><a class="reference internal" href="#models.database.Grade" title="models.database.Grade"><em>Grade</em></a><em>]</em>) – Lista ocen wystawionych przez nauczyciela.</p></li>
+<li><p><strong>schedules</strong> (<em>list</em><em>[</em><a class="reference internal" href="#models.database.Schedule" title="models.database.Schedule"><em>Schedule</em></a><em>]</em>) – Lista zajęć nauczyciela.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.database.Teacher.grades">
+<span class="sig-name descname"><span class="pre">grades</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Grade'</span></em><a class="headerlink" href="#models.database.Teacher.grades" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.database.Teacher.schedules">
+<span class="sig-name descname"><span class="pre">schedules</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Schedule'</span></em><a class="headerlink" href="#models.database.Teacher.schedules" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.database.Teacher.subjects">
+<span class="sig-name descname"><span class="pre">subjects</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Subject'</span></em><a class="headerlink" href="#models.database.Teacher.subjects" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.database.Time">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.database.</span></span><span class="sig-name descname"><span class="pre">Time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/models/database.html#Time"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.database.Time" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">declarative_base</span></code></p>
+<p>Klasa reprezentująca godzinę (okno czasowe zajęć).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>int</em>) – Unikalny identyfikator wpisu czasu.</p></li>
+<li><p><strong>time</strong> (<em>str</em>) – Opis czasu (np. “10:15 - 11:45”).</p></li>
+<li><p><strong>schedules</strong> (<em>list</em><em>[</em><a class="reference internal" href="#models.database.Schedule" title="models.database.Schedule"><em>Schedule</em></a><em>]</em>) – Lista zajęć przypisanych do tego czasu.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="models.database.Time.schedules">
+<span class="sig-name descname"><span class="pre">schedules</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'Schedule'</span></em><a class="headerlink" href="#models.database.Time.schedules" title="Link to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="models.database.User">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.database.</span></span><span class="sig-name descname"><span class="pre">User</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/models/database.html#User"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.database.User" title="Link to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">declarative_base</span></code></p>
+<p>Bazowa klasa użytkownika.</p>
+<p>Zawiera wspólne pola dla wszystkich typów użytkowników (student, nauczyciel, admin).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>__tablename__</strong> – Nazwa tabeli w bazie danych.</p></li>
+<li><p><strong>id</strong> (<em>int</em>) – Unikalny identyfikator użytkownika.</p></li>
+<li><p><strong>type</strong> (<em>str</em>) – Typ użytkownika wykorzystywany do polimorfizmu.</p></li>
+<li><p><strong>first_name</strong> (<em>str</em>) – Imię użytkownika.</p></li>
+<li><p><strong>last_name</strong> (<em>str</em>) – Nazwisko użytkownika.</p></li>
+<li><p><strong>username</strong> (<em>str</em>) – Unikalna nazwa użytkownika.</p></li>
+<li><p><strong>password_hash</strong> (<em>str</em>) – Hasło w postaci zahashowanej.</p></li>
+<li><p><strong>role</strong> (<em>str</em>) – Rola użytkownika (np. “student”).</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="models.database.init_db">
+<span class="sig-prename descclassname"><span class="pre">models.database.</span></span><span class="sig-name descname"><span class="pre">init_db</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/models/database.html#init_db"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#models.database.init_db" title="Link to this definition">¶</a></dt>
+<dd><p>Tworzy bazę danych SQLite oraz tabele na podstawie modeli.</p>
+<p>Wykorzystuje SQLAlchemy do wygenerowania struktur w bazie danych
+zgodnych z zdefiniowanymi klasami modelu.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="models.database.teacher_subject_link">
+<span class="sig-prename descclassname"><span class="pre">models.database.</span></span><span class="sig-name descname"><span class="pre">teacher_subject_link</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'teacher_subject_link'</span></em><a class="headerlink" href="#models.database.teacher_subject_link" title="Link to this definition">¶</a></dt>
+<dd><p>Tabela łącząca relację wiele-do-wielu między nauczycielami i przedmiotami.</p>
+</dd></dl>
+
+</section>
+<section id="module-models">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-models" title="Link to this heading">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Projekt Końcowy</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">src</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="gui.html">gui package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">models package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">utils package</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">src</a><ul>
+      <li>Previous: <a href="main.html" title="previous chapter">main module</a></li>
+      <li>Next: <a href="utils.html" title="next chapter">utils package</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, Ewa Grochola, Ula Kępka.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/models.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>models.database &#8212; Projekt Końcowy 0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="../../_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="../../_static/alabaster.css?v=27fed22d" />
+    <script src="../../_static/documentation_options.js?v=8dde47fa"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for models.database</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">create_engine</span><span class="p">,</span> <span class="n">Column</span><span class="p">,</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">String</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">,</span> <span class="n">Date</span><span class="p">,</span> <span class="n">Float</span><span class="p">,</span> <span class="n">Table</span><span class="p">,</span><span class="n">inspect</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.orm</span><span class="w"> </span><span class="kn">import</span> <span class="n">relationship</span><span class="p">,</span> <span class="n">declarative_base</span><span class="p">,</span> <span class="n">sessionmaker</span>
+
+<span class="n">Base</span> <span class="o">=</span> <span class="n">declarative_base</span><span class="p">()</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;sqlite:///students.db&#39;</span><span class="p">)</span>
+<span class="n">Session</span> <span class="o">=</span> <span class="n">sessionmaker</span><span class="p">(</span><span class="n">bind</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+<span class="n">session</span> <span class="o">=</span> <span class="n">Session</span><span class="p">()</span>
+
+<div class="viewcode-block" id="init_db">
+<a class="viewcode-back" href="../../models.html#models.database.init_db">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">init_db</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Tworzy bazę danych SQLite oraz tabele na podstawie modeli.</span>
+
+<span class="sd">    Wykorzystuje SQLAlchemy do wygenerowania struktur w bazie danych</span>
+<span class="sd">    zgodnych z zdefiniowanymi klasami modelu.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">Base</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">create_all</span><span class="p">(</span><span class="n">engine</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="User">
+<a class="viewcode-back" href="../../models.html#models.database.User">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">User</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Bazowa klasa użytkownika.</span>
+
+<span class="sd">    Zawiera wspólne pola dla wszystkich typów użytkowników (student, nauczyciel, admin).</span>
+
+<span class="sd">    :cvar __tablename__: Nazwa tabeli w bazie danych.</span>
+<span class="sd">    :ivar id: Unikalny identyfikator użytkownika.</span>
+<span class="sd">    :vartype id: int</span>
+<span class="sd">    :ivar type: Typ użytkownika wykorzystywany do polimorfizmu.</span>
+<span class="sd">    :vartype type: str</span>
+<span class="sd">    :ivar first_name: Imię użytkownika.</span>
+<span class="sd">    :vartype first_name: str</span>
+<span class="sd">    :ivar last_name: Nazwisko użytkownika.</span>
+<span class="sd">    :vartype last_name: str</span>
+<span class="sd">    :ivar username: Unikalna nazwa użytkownika.</span>
+<span class="sd">    :vartype username: str</span>
+<span class="sd">    :ivar password_hash: Hasło w postaci zahashowanej.</span>
+<span class="sd">    :vartype password_hash: str</span>
+<span class="sd">    :ivar role: Rola użytkownika (np. &quot;student&quot;).</span>
+<span class="sd">    :vartype role: str</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;user&#39;</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="nb">type</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">)</span>  <span class="c1"># potrzebne do dziedziczenia</span>
+    <span class="n">first_name</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">)</span>
+    <span class="n">last_name</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">)</span>
+    <span class="n">username</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">password_hash</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">)</span>
+    <span class="n">role</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;student&quot;</span><span class="p">)</span>
+
+    <span class="n">__mapper_args__</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;polymorphic_identity&#39;</span><span class="p">:</span> <span class="s1">&#39;user&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;polymorphic_on&#39;</span><span class="p">:</span> <span class="nb">type</span>
+    <span class="p">}</span></div>
+
+
+
+<div class="viewcode-block" id="Student">
+<a class="viewcode-back" href="../../models.html#models.database.Student">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Student</span><span class="p">(</span><span class="n">User</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Klasa reprezentująca studenta.</span>
+
+<span class="sd">    Dziedziczy po klasie User.</span>
+
+<span class="sd">    :ivar id: Unikalny identyfikator studenta (ForeignKey do User.id).</span>
+<span class="sd">    :vartype id: int</span>
+<span class="sd">    :ivar grades: Lista ocen przypisanych do studenta.</span>
+<span class="sd">    :vartype grades: list[Grade]</span>
+<span class="sd">    :ivar schedules: Lista zajęć (harmonogram) studenta.</span>
+<span class="sd">    :vartype schedules: list[Schedule]</span>
+<span class="sd">    :ivar group_id: Identyfikator grupy, do której należy student.</span>
+<span class="sd">    :vartype group_id: int</span>
+<span class="sd">    :ivar group: Obiekt grupy, do której należy student.</span>
+<span class="sd">    :vartype group: Group</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;student&#39;</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;user.id&#39;</span><span class="p">),</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">grades</span> <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s2">&quot;Grade&quot;</span><span class="p">,</span> <span class="n">back_populates</span><span class="o">=</span><span class="s2">&quot;student&quot;</span><span class="p">)</span>
+    <span class="n">schedules</span> <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s2">&quot;Schedule&quot;</span><span class="p">,</span> <span class="n">back_populates</span><span class="o">=</span><span class="s2">&quot;student&quot;</span><span class="p">)</span>
+    <span class="n">group_id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;groups.id&#39;</span><span class="p">))</span>
+    <span class="n">group</span> <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s2">&quot;Group&quot;</span><span class="p">,</span> <span class="n">back_populates</span><span class="o">=</span><span class="s2">&quot;students&quot;</span><span class="p">)</span>
+
+    <span class="n">__mapper_args__</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;polymorphic_identity&#39;</span><span class="p">:</span> <span class="s1">&#39;student&#39;</span><span class="p">,</span>
+    <span class="p">}</span></div>
+
+
+
+<div class="viewcode-block" id="Teacher">
+<a class="viewcode-back" href="../../models.html#models.database.Teacher">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Teacher</span><span class="p">(</span><span class="n">User</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Klasa reprezentująca nauczyciela.</span>
+
+<span class="sd">    Dziedziczy po klasie User.</span>
+
+<span class="sd">    :ivar id: Unikalny identyfikator nauczyciela (ForeignKey do User.id).</span>
+<span class="sd">    :vartype id: int</span>
+<span class="sd">    :ivar subjects: Lista przedmiotów nauczanych przez nauczyciela.</span>
+<span class="sd">    :vartype subjects: list[Subject]</span>
+<span class="sd">    :ivar grades: Lista ocen wystawionych przez nauczyciela.</span>
+<span class="sd">    :vartype grades: list[Grade]</span>
+<span class="sd">    :ivar schedules: Lista zajęć nauczyciela.</span>
+<span class="sd">    :vartype schedules: list[Schedule]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;teacher&#39;</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;user.id&#39;</span><span class="p">),</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">subjects</span> <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s2">&quot;Subject&quot;</span><span class="p">,</span> <span class="n">secondary</span><span class="o">=</span><span class="s2">&quot;teacher_subject_link&quot;</span><span class="p">,</span> <span class="n">back_populates</span><span class="o">=</span><span class="s2">&quot;teachers&quot;</span><span class="p">)</span>
+    <span class="n">grades</span> <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s2">&quot;Grade&quot;</span><span class="p">,</span> <span class="n">back_populates</span><span class="o">=</span><span class="s2">&quot;teacher&quot;</span><span class="p">)</span>
+    <span class="n">schedules</span> <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s2">&quot;Schedule&quot;</span><span class="p">,</span> <span class="n">back_populates</span><span class="o">=</span><span class="s2">&quot;teacher&quot;</span><span class="p">)</span>
+
+    <span class="n">__mapper_args__</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;polymorphic_identity&#39;</span><span class="p">:</span> <span class="s1">&#39;teacher&#39;</span><span class="p">,</span>
+    <span class="p">}</span></div>
+
+
+
+<div class="viewcode-block" id="Admin">
+<a class="viewcode-back" href="../../models.html#models.database.Admin">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Admin</span><span class="p">(</span><span class="n">User</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Klasa reprezentująca administratora.</span>
+
+<span class="sd">    Dziedziczy po klasie User.</span>
+
+<span class="sd">    :ivar id: Unikalny identyfikator administratora (ForeignKey do User.id).</span>
+<span class="sd">    :vartype id: int</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;admin&#39;</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;user.id&#39;</span><span class="p">),</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">__mapper_args__</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;polymorphic_identity&#39;</span><span class="p">:</span> <span class="s1">&#39;admin&#39;</span><span class="p">,</span>
+    <span class="p">}</span></div>
+
+
+
+<div class="viewcode-block" id="Group">
+<a class="viewcode-back" href="../../models.html#models.database.Group">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Group</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Klasa reprezentująca grupę studentów.</span>
+
+<span class="sd">    :ivar id: Unikalny identyfikator grupy.</span>
+<span class="sd">    :vartype id: int</span>
+<span class="sd">    :ivar name: Nazwa grupy.</span>
+<span class="sd">    :vartype name: str</span>
+<span class="sd">    :ivar students: Lista studentów należących do grupy.</span>
+<span class="sd">    :vartype students: list[Student]</span>
+<span class="sd">    :ivar max_students: Maksymalna liczba studentów w grupie.</span>
+<span class="sd">    :vartype max_students: int</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;groups&#39;</span>  <span class="c1"># group często jest zarezerwowana nazwa w SQL</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">)</span>
+    <span class="n">students</span> <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s2">&quot;Student&quot;</span><span class="p">,</span> <span class="n">back_populates</span><span class="o">=</span><span class="s2">&quot;group&quot;</span><span class="p">)</span>
+    <span class="n">max_students</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="Subject">
+<a class="viewcode-back" href="../../models.html#models.database.Subject">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Subject</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Klasa reprezentująca przedmiot.</span>
+
+<span class="sd">    :ivar id: Unikalny identyfikator przedmiotu.</span>
+<span class="sd">    :vartype id: int</span>
+<span class="sd">    :ivar name: Nazwa przedmiotu.</span>
+<span class="sd">    :vartype name: str</span>
+<span class="sd">    :ivar nick: Skrót nazwy przedmiotu.</span>
+<span class="sd">    :vartype nick: str</span>
+<span class="sd">    :ivar color: Kolor przypisany do przedmiotu (np. dla wykresów).</span>
+<span class="sd">    :vartype color: str</span>
+<span class="sd">    :ivar teachers: Lista nauczycieli prowadzących ten przedmiot.</span>
+<span class="sd">    :vartype teachers: list[Teacher]</span>
+<span class="sd">    :ivar grades: Lista ocen z tego przedmiotu.</span>
+<span class="sd">    :vartype grades: list[Grade]</span>
+<span class="sd">    :ivar schedules: Lista zajęć tego przedmiotu.</span>
+<span class="sd">    :vartype schedules: list[Schedule]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;subject&#39;</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">name</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">)</span>
+    <span class="n">nick</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">)</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;#FFFFFF&quot;</span><span class="p">)</span>
+    <span class="n">teachers</span> <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s2">&quot;Teacher&quot;</span><span class="p">,</span> <span class="n">secondary</span><span class="o">=</span><span class="s2">&quot;teacher_subject_link&quot;</span><span class="p">,</span> <span class="n">back_populates</span><span class="o">=</span><span class="s2">&quot;subjects&quot;</span><span class="p">)</span>
+    <span class="n">grades</span> <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s2">&quot;Grade&quot;</span><span class="p">,</span> <span class="n">back_populates</span><span class="o">=</span><span class="s2">&quot;subject&quot;</span><span class="p">)</span>
+    <span class="n">schedules</span> <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s2">&quot;Schedule&quot;</span><span class="p">,</span> <span class="n">back_populates</span><span class="o">=</span><span class="s2">&quot;subject&quot;</span><span class="p">)</span></div>
+
+
+
+<span class="n">teacher_subject_link</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span>
+    <span class="s1">&#39;teacher_subject_link&#39;</span><span class="p">,</span>
+    <span class="n">Base</span><span class="o">.</span><span class="n">metadata</span><span class="p">,</span>
+    <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;teacher_id&#39;</span><span class="p">,</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;teacher.id&#39;</span><span class="p">)),</span>
+    <span class="n">Column</span><span class="p">(</span><span class="s1">&#39;subject_id&#39;</span><span class="p">,</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;subject.id&#39;</span><span class="p">))</span>
+<span class="p">)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Tabela łącząca relację wiele-do-wielu między nauczycielami i przedmiotami.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<div class="viewcode-block" id="Time">
+<a class="viewcode-back" href="../../models.html#models.database.Time">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Time</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Klasa reprezentująca godzinę (okno czasowe zajęć).</span>
+
+<span class="sd">    :ivar id: Unikalny identyfikator wpisu czasu.</span>
+<span class="sd">    :vartype id: int</span>
+<span class="sd">    :ivar time: Opis czasu (np. &quot;10:15 - 11:45&quot;).</span>
+<span class="sd">    :vartype time: str</span>
+<span class="sd">    :ivar schedules: Lista zajęć przypisanych do tego czasu.</span>
+<span class="sd">    :vartype schedules: list[Schedule]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;time&#39;</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">)</span>  <span class="c1"># np. &quot;10:15 - 11:45&quot;</span>
+    <span class="n">schedules</span> <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s2">&quot;Schedule&quot;</span><span class="p">,</span> <span class="n">back_populates</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="Schedule">
+<a class="viewcode-back" href="../../models.html#models.database.Schedule">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Schedule</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Klasa reprezentująca harmonogram zajęć.</span>
+
+<span class="sd">    :ivar id: Unikalny identyfikator zajęcia.</span>
+<span class="sd">    :vartype id: int</span>
+<span class="sd">    :ivar day: Dzień tygodnia (np. &quot;Poniedziałek&quot;).</span>
+<span class="sd">    :vartype day: str</span>
+<span class="sd">    :ivar time_id: Identyfikator czasu zajęć.</span>
+<span class="sd">    :vartype time_id: int</span>
+<span class="sd">    :ivar time: Obiekt czasu zajęć.</span>
+<span class="sd">    :vartype time: Time</span>
+<span class="sd">    :ivar student_id: Identyfikator studenta przypisanego do zajęć.</span>
+<span class="sd">    :vartype student_id: int</span>
+<span class="sd">    :ivar student: Obiekt studenta.</span>
+<span class="sd">    :vartype student: Student</span>
+<span class="sd">    :ivar teacher_id: Identyfikator nauczyciela prowadzącego zajęcia.</span>
+<span class="sd">    :vartype teacher_id: int</span>
+<span class="sd">    :ivar teacher: Obiekt nauczyciela.</span>
+<span class="sd">    :vartype teacher: Teacher</span>
+<span class="sd">    :ivar subject_id: Identyfikator przedmiotu zajęć.</span>
+<span class="sd">    :vartype subject_id: int</span>
+<span class="sd">    :ivar subject: Obiekt przedmiotu.</span>
+<span class="sd">    :vartype subject: Subject</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;schedule&#39;</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">day</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">String</span><span class="p">)</span>
+
+    <span class="n">time_id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;time.id&#39;</span><span class="p">))</span>
+    <span class="n">time</span> <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">,</span> <span class="n">back_populates</span><span class="o">=</span><span class="s2">&quot;schedules&quot;</span><span class="p">)</span>
+
+    <span class="n">student_id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;student.id&#39;</span><span class="p">))</span>
+    <span class="n">student</span> <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s2">&quot;Student&quot;</span><span class="p">,</span> <span class="n">back_populates</span><span class="o">=</span><span class="s2">&quot;schedules&quot;</span><span class="p">)</span>
+
+    <span class="n">teacher_id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;teacher.id&#39;</span><span class="p">))</span>
+    <span class="n">teacher</span> <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s2">&quot;Teacher&quot;</span><span class="p">,</span> <span class="n">back_populates</span><span class="o">=</span><span class="s2">&quot;schedules&quot;</span><span class="p">)</span>
+
+    <span class="n">subject_id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;subject.id&#39;</span><span class="p">))</span>
+    <span class="n">subject</span> <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s2">&quot;Subject&quot;</span><span class="p">,</span> <span class="n">back_populates</span><span class="o">=</span><span class="s2">&quot;schedules&quot;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="Grade">
+<a class="viewcode-back" href="../../models.html#models.database.Grade">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Grade</span><span class="p">(</span><span class="n">Base</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Klasa reprezentująca ocenę.</span>
+
+<span class="sd">    :ivar id: Unikalny identyfikator oceny.</span>
+<span class="sd">    :vartype id: int</span>
+<span class="sd">    :ivar grade: Wartość oceny (np. 4.5).</span>
+<span class="sd">    :vartype grade: float</span>
+<span class="sd">    :ivar date: Data wystawienia oceny.</span>
+<span class="sd">    :vartype date: datetime.date</span>
+<span class="sd">    :ivar student_id: Identyfikator studenta, któremu wystawiono ocenę.</span>
+<span class="sd">    :vartype student_id: int</span>
+<span class="sd">    :ivar student: Obiekt studenta.</span>
+<span class="sd">    :vartype student: Student</span>
+<span class="sd">    :ivar teacher_id: Identyfikator nauczyciela wystawiającego ocenę.</span>
+<span class="sd">    :vartype teacher_id: int</span>
+<span class="sd">    :ivar teacher: Obiekt nauczyciela.</span>
+<span class="sd">    :vartype teacher: Teacher</span>
+<span class="sd">    :ivar subject_id: Identyfikator przedmiotu, którego dotyczy ocena.</span>
+<span class="sd">    :vartype subject_id: int</span>
+<span class="sd">    :ivar subject: Obiekt przedmiotu.</span>
+<span class="sd">    :vartype subject: Subject</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">__tablename__</span> <span class="o">=</span> <span class="s1">&#39;grade&#39;</span>
+    <span class="nb">id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">primary_key</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">grade</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Float</span><span class="p">)</span>
+    <span class="n">date</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Date</span><span class="p">)</span>
+
+    <span class="n">student_id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;student.id&#39;</span><span class="p">))</span>
+    <span class="n">student</span> <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s2">&quot;Student&quot;</span><span class="p">,</span> <span class="n">back_populates</span><span class="o">=</span><span class="s2">&quot;grades&quot;</span><span class="p">)</span>
+
+    <span class="n">teacher_id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;teacher.id&#39;</span><span class="p">))</span>
+    <span class="n">teacher</span> <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s2">&quot;Teacher&quot;</span><span class="p">,</span> <span class="n">back_populates</span><span class="o">=</span><span class="s2">&quot;grades&quot;</span><span class="p">)</span>
+
+    <span class="n">subject_id</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="n">Integer</span><span class="p">,</span> <span class="n">ForeignKey</span><span class="p">(</span><span class="s1">&#39;subject.id&#39;</span><span class="p">))</span>
+    <span class="n">subject</span> <span class="o">=</span> <span class="n">relationship</span><span class="p">(</span><span class="s2">&quot;Subject&quot;</span><span class="p">,</span> <span class="n">back_populates</span><span class="o">=</span><span class="s2">&quot;grades&quot;</span><span class="p">)</span></div>
+
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">Projekt Końcowy</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">src</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, Ewa Grochola, Ula Kępka.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>
